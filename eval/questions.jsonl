@@ -1,0 +1,8 @@
+{"id":"leave-amount","question":"How many days of annual leave do employees receive?","expected_sources":["leave-policy.md"],"answer_contains":["20"]}
+{"id":"leave-notice","question":"When must annual leave requests be submitted?","expected_sources":["leave-policy.md"],"answer_contains":["10 business days"]}
+{"id":"leave-carryover","question":"How much unused annual leave may carry over?","expected_sources":["leave-policy.md"],"answer_contains":["5"]}
+{"id":"security-report","question":"When must security incidents be reported?","expected_sources":["security-policy.md"],"answer_contains":["1 hour"]}
+{"id":"security-contact","question":"What is the security incident contact?","expected_sources":["security-policy.md"],"answer_contains":["security@example.com"]}
+{"id":"remote-days","question":"How many days can employees work remotely?","expected_sources":["remote-work.md"],"answer_contains":["3"]}
+{"id":"equipment","question":"What is the home office equipment allowance?","expected_sources":["remote-work.md"],"answer_contains":["400"]}
+{"id":"unknown","question":"Explain quantum chromodynamics","expected_sources":[],"should_abstain":true}
