@@ -1,0 +1,27 @@
+name: CI
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -r requirements.lock
+      - run: python -m pip install --no-deps -e .
+      - run: python -m ruff check .
+      - run: python -m ruff format --check .
+      - run: python -m pytest -q
+      - run: python -m production_rag ingest data/sample
+      - run: python -m production_rag evaluate --output reports/evaluation.json
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: evaluation-${{ matrix.python }}
+          path: reports/evaluation.json
